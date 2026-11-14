@@ -1,0 +1,1 @@
+Source candidate. GitHub Actions builds the Windows x86 DLL and runs Windows/portable tests. A successful build proves compilation and OS semantics tests only; actual loading and decoder-specific integration still need testing in Winamp/WACUP.
