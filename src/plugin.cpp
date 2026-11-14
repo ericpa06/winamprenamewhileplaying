@@ -34,6 +34,7 @@ static void __cdecl Config() {
  MessageBoxW(nullptr,msg,L"Winamp File Share Unlocker",MB_OK|MB_ICONINFORMATION);
 }
 static void __cdecl Quit() { MH_DisableHook(MH_ALL_HOOKS); MH_Uninitialize(); }
-static winampGeneralPurposePlugin plugin={GPPHDR_VER,"Winamp File Share Unlocker",Init,Config,Quit,nullptr,nullptr};
+static char pluginDescription[] = "Winamp File Share Unlocker";
+static winampGeneralPurposePlugin plugin={GPPHDR_VER,pluginDescription,Init,Config,Quit,nullptr,nullptr};
 extern "C" __declspec(dllexport) winampGeneralPurposePlugin *winampGetGeneralPurposePlugin(){return &plugin;}
 BOOL WINAPI DllMain(HINSTANCE h,DWORD reason,LPVOID) { if(reason==DLL_PROCESS_ATTACH) DisableThreadLibraryCalls(h); return TRUE; }
