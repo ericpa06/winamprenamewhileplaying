@@ -4,7 +4,7 @@
 int wmain() {
  wchar_t dir[MAX_PATH]{}, path[MAX_PATH]{}, target[MAX_PATH]{};
  if (!GetTempPathW(MAX_PATH, dir) || !GetTempFileNameW(dir, L"wfu", 0, path)) return 1;
- if (swprintf_s(target, L"%s-renamed", path) < 0) { DeleteFileW(path); return 2; }
+ if (wcscpy_s(target, MAX_PATH, path) != 0 || wcscat_s(target, MAX_PATH, L"-renamed") != 0) { DeleteFileW(path); return 2; }
 
  // A handle without FILE_SHARE_DELETE must prevent rename.
  HANDLE restrictive=CreateFileW(path,GENERIC_READ,FILE_SHARE_READ|FILE_SHARE_WRITE,nullptr,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,nullptr);
